@@ -2,7 +2,7 @@
 const alunosDaEscola = [{ nome: 'Henrique', notas: [], cursos: [], faltas: 5 }, { nome: 'Edson', notas: [], cursos: [], faltas: 2 }, { nome: 'Bruno', notas: [10, 9.8, 9.6], cursos: [], faltas: 0 }, { nome: 'Guilherme', notas: [10, 9.8, 9.6], cursos: [{ nomeDoCurso: 'Full Stack', dataMatricula: new Date }], faltas: 0 }, { nome: 'Carlos', notas: [], cursos: [], faltas: 0 }, { nome: 'Lucca', notas: [10, 9.8, 9.6], cursos: [{ nomeDoCurso: 'UX', dataMatricula: new Date }], faltas: 0 }];
 
 // implementação
-const adicionarAluno = (nomeAluno) => {  
+const adicionarAluno = (nomeAluno) => {
     //Declaração de objeto auxiliar para inserção no array
     let novoAluno = {
         nome: nomeAluno,
@@ -20,7 +20,7 @@ const adicionarAluno = (nomeAluno) => {
 }
 
 const listarAlunos = () => {
-    alunosDaEscola.forEach( (aluno) => {
+    alunosDaEscola.forEach((aluno) => {
         console.log('')
         console.log(`Nome: ${aluno.nome}`)
         // Se a primeira posição do array cursos for diferente de null ou diferente de undefined significa que o aluno em questão está cadastrado em um curso
@@ -136,7 +136,7 @@ const aplicarNota = (aluno, nota) => {
     }
 }
 
-const aprovarAluno = (aluno) =>{
+const aprovarAluno = (aluno) => {
     // Verifica se o objeto recebido é válido
     let alunoAux = buscarAluno(aluno.nome)
     let notaMedia
@@ -144,7 +144,7 @@ const aprovarAluno = (aluno) =>{
     // Verifica se o objeto recebido no passo anterior está vazio
     if (alunoAux.constructor === Object && Object.entries(alunoAux).length === 0) {
         console.log('Aluno(a) não cadastrado no sistema!')
-    }    
+    }
     else {
         //Verifica se o aluno está matriculado em um curso
         if (aluno.cursos.length === 0) {
@@ -156,16 +156,16 @@ const aprovarAluno = (aluno) =>{
             for (let i = 0; i < alunosDaEscola.length; i++) {
                 if (alunosDaEscola[i].nome === aluno.nome) {
                     // Soma todas as notas do aluno
-                    notaMedia = alunosDaEscola[i].notas.reduce( (acumulador, posicaoAtual) =>{
+                    notaMedia = alunosDaEscola[i].notas.reduce((acumulador, posicaoAtual) => {
                         return acumulador + posicaoAtual
                     })
                     // Divide o resultado da soma das notas pela quantidade de notas
                     notaMedia = notaMedia / alunosDaEscola[i].notas.length
                     //Verifica as condições de aprovação e exibe o resultado para o usuário
-                    if(notaMedia > 7 && alunosDaEscola[i].faltas <= 3){
+                    if (notaMedia > 7 && alunosDaEscola[i].faltas <= 3) {
                         console.log('Aluno aprovado')
                     }
-                    else{
+                    else {
                         console.log('Aluno reprovado')
                     }
                 }
